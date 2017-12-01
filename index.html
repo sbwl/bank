@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="fonts1/iconfont.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <img src="image/download.png" class="col-xs-5">
+            <i class="iconfont col-xs-1 col-xs-offset-5">&#xe65c;</i>
+            <i class="iconfont col-xs-1">&#xe672;</i>
+        </header>
+        <section>
+            <div class="box">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="image/1.jpg"></div>
+                    <div class="swiper-slide"><img src="image/2.jpg"></div>
+                    <div class="swiper-slide"><img src="image/3.jpg"></div>
+                    <div class="swiper-slide"><img src="image/4.jpg"></div>
+                    <div class="swiper-slide"><img src="image/5.jpg"></div>
+                    <div class="swiper-slide"><img src="image/6.jpg"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="dir">
+                <p><b class="col-xs-7">全国--那下次就找不到菜单</b><span class="col-xs-3 col-xs-offset-2">2017-11-02</span></p>
+                <p><b class="col-xs-7">全国--那下次就找不到菜单</b><span class="col-xs-3 col-xs-offset-2">2017-11-02</span></p>
+            </div>
+            <h3>便捷服务</h3>
+            <div class="tw">
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>掌上银行下载</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>行情数据</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>图说农行</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>营业机构查询</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>在线预约排队</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>信用卡申请</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>智能客服</dd>
+                </dl>
+                <dl class="col-xs-3">
+                    <dt><i class="iconfont">&#xe66e;</i></dt>
+                    <dd>WAP网银登录</dd>
+                </dl>
+            </div>
+            <h3>您的每段旅程，我们全新陪伴</h3>
+            <ul>
+                <li><span></span>学生时代<i class="iconfont i">&#xe703;</i></li>
+                <li><span></span>职场生涯<i class="iconfont i">&#xe703;</i></li>
+                <li><span></span>品质家庭<i class="iconfont i">&#xe703;</i></li>
+                <li><span></span>养老保障<i class="iconfont i">&#xe703;</i>
+                    <div class="pho">
+                        <img src="image/download.jpg">
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script>
+        var sw = new Swiper('.box', {
+            autoplay:1000,
+            loop:true,
+            autoplayDisableOnInteraction:false,
+            pagination:'.swiper-pagination'
+        })
+        function ajax(url){
+            return new Promise(function (resolve, reject) {
+                var xhr = null;
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                } else {
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                var handler = function () {
+                    if (xhr.readyState !== 4) return;
+                    if (xhr.status === 200) {
+                        resolve(xhr.responseText);
+                    } else {
+                        reject('Error');
+                    }
+                }
+                xhr.open('GET', url, true);
+                xhr.send();
+                xhr.onreadystatechange = handler;
+            })
+        }
+        ajax("http://localhost:8105/user").then(function (result) {
+            //console.log(result);
+        }).catch(function (error) {
+           // console.log(error);
+        })
+    </script>
+</body>
+</html>
